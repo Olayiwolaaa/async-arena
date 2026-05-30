@@ -4,6 +4,8 @@ A real-time playground for comparing async API patterns side by side.
 
 Pick a pattern, watch it work, and see the raw network traffic — all powered by the same live stock ticker data source.
 
+![img.png](img.png)(https://substack.com/home/post/p-197567426)
+
 ## Patterns Covered
 
 | # | Pattern | Description |
