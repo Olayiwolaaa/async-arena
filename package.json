@@ -4,7 +4,8 @@
   "description": "A real-time playground for comparing async API patterns side by side.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node server/index.ts"
   },
   "repository": {
     "type": "git",
