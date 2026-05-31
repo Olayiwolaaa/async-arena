@@ -20,20 +20,24 @@ export class PriceEngine extends EventEmitter {
 
     start(): void {
         const tick = () => {
-            const symbols = Object.keys(this.prices);
-            const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+            try {
+                const symbols = Object.keys(this.prices);
+                const symbol = symbols[Math.floor(Math.random() * symbols.length)];
 
-            const change = this.prices[symbol] * (Math.random() * 0.04 - 0.02);
-            this.prices[symbol] = +(this.prices[symbol] + change).toFixed(2);
+                const change = this.prices[symbol] * (Math.random() * 0.04 - 0.02);
+                this.prices[symbol] = +(this.prices[symbol] + change).toFixed(2);
 
-            const update: PriceUpdate = {
-                symbol,
-                price: this.prices[symbol],
-                change: +change.toFixed(2),
-                timestamp: Date.now(),
-            };
+                const update: PriceUpdate = {
+                    symbol,
+                    price: this.prices[symbol],
+                    change: +change.toFixed(2),
+                    timestamp: Date.now(),
+                };
 
-            this.emit("price", update);
+                this.emit("price", update);
+            } catch (error) {
+                console.error("Price engine tick failed", error);
+            }
 
             // schedule next tick at a random interval (1-3s)
             this.interval = setTimeout(tick, 1000 + Math.random() * 2000);
